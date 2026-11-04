@@ -1,0 +1,575 @@
+
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("../fonts/PressStart2P-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url("../fonts/PixelifySans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Press Start 2P", monospace;
+}
+
+input,
+select,
+textarea,
+label,
+p,
+span,
+small,
+strong,
+a {
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+button {
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+h1 {
+  line-height: 1.6;
+}
+
+h2,
+h3 {
+  line-height: 1.7;
+}
+
+
+
+:root {
+  --navy: #22335e;
+  --cream: #f1ece7;
+  --gold: #8b7945;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: var(--navy);
+  color: white;
+  padding: calc(12px + env(safe-area-inset-top)) 12px 12px;
+  border-bottom: 3px solid var(--gold);
+}
+
+.app-header h2 {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.app-header span {
+  display: block;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.page-content {
+  flex: 1;
+  width: 100%;
+  padding: 18px 12px 20px;
+}
+
+.page-content h3 {
+  font-size: 15px;
+  margin: 0 0 14px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px;
+  border: 2px solid var(--navy);
+  border-radius: 0;
+  background: white;
+  color: var(--navy);
+  font-size: 13px;
+}
+
+.primary-btn,
+.outline-btn {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 10px;
+  margin-top: 14px;
+  border: 2px solid var(--navy);
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
+
+.primary-btn {
+  background: var(--gold);
+  color: white;
+}
+
+.outline-btn {
+  background: transparent;
+  color: var(--navy);
+}
+
+.primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  background: transparent;
+  border: 0;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 0;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.message {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4f5871;
+}
+
+.subheading {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+#welcomeScreen {
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: calc(40px + env(safe-area-inset-top)) 20px 35px;
+}
+
+.welcome-content {
+  margin: auto 0;
+}
+
+.welcome-content h1 {
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.welcome-content p {
+  font-size: 13px;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#loginForm input {
+  min-height: 58px;
+}
+
+#loginForm .primary-btn {
+  margin-top: auto;
+}
+
+.register-text {
+  text-align: center;
+  font-size: 12px;
+}
+
+.register-text a {
+  color: var(--navy);
+  font-weight: bold;
+}
+
+#registerForm .primary-btn {
+  margin-top: 20px;
+}
+
+#stallSearch {
+  margin-bottom: 10px;
+}
+
+.stall-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stall-card,
+.menu-item,
+.cart-item,
+.checkout-item,
+.order-card {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+}
+
+.stall-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-height: 65px;
+  text-align: left;
+}
+
+.stall-card strong,
+.menu-item strong,
+.cart-item strong {
+  font-size: 13px;
+}
+
+.stall-card small,
+.menu-item small,
+.cart-item small {
+  font-size: 11px;
+}
+
+.menu-item,
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.menu-item-info,
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 100px;
+}
+
+.add-btn,
+.quantity-btn {
+  min-height: 36px;
+  min-width: 36px;
+  padding: 8px 10px;
+  background: var(--gold);
+  color: white;
+  border: 1px solid var(--navy);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.remove-btn {
+  background: transparent;
+  border: 0;
+  color: #a12626;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 15px 0;
+  border-top: 2px solid var(--navy);
+  font-size: 15px;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  min-height: 55px;
+  padding: 8px 5px;
+  margin-top: auto;
+  border-top: 2px solid var(--navy);
+  background: var(--cream);
+}
+
+.nav-item {
+  flex: 1;
+  min-height: 40px;
+  padding: 8px 4px;
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  font-size: 11px;
+}
+
+.nav-item.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.qr-placeholder {
+  min-height: 220px;
+  max-width: 300px;
+  margin: 18px auto;
+  padding: 24px 12px;
+  background: white;
+  border: 2px dashed var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.qr-placeholder .qr-icon {
+  font-size: 65px;
+  line-height: 1;
+}
+
+.qr-placeholder strong {
+  font-size: 13px;
+}
+
+.qr-placeholder small {
+  font-size: 11px;
+}
+
+.confirmation-mark {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: white;
+  display: grid;
+  place-items: center;
+  margin: 18px auto;
+  font-size: 35px;
+}
+
+.detail-panel {
+  background: white;
+  border: 2px solid var(--navy);
+  padding: 15px;
+  margin: 14px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.detail-panel p {
+  margin: 7px 0;
+}
+
+.order-card {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.order-card small {
+  font-size: 12px;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.vendor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.vendor-actions button {
+  min-height: 38px;
+  padding: 8px 12px;
+  background: var(--gold);
+  color: white;
+  border: 1px solid var(--navy);
+  font-size: 12px;
+}
+
+.demo-entry {
+  margin-top: 35px;
+}
+
+@media (min-width: 600px) {
+  .page-content {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  #welcomeScreen {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-content h3 {
+    font-size: 14px;
+  }
+
+  .primary-btn {
+    font-size: 11px;
+  }
+}
+
+
+body,
+input,
+select,
+textarea {
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+.primary-btn,
+.back-btn,
+.nav-item,
+.add-btn,
+.quantity-btn,
+.remove-btn {
+  font-family: "Press Start 2P", monospace;
+  line-height: 1.7;
+}
+
+.primary-btn,
+.add-btn,
+.nav-item,
+.quantity-btn,
+.remove-btn {
+  font-size: 9px;
+}
+
+.app-header h2 {
+  font-size: 11px;
+}
+
+.page-content h3 {
+  font-size: 12px;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+label,
+p,
+small,
+strong,
+span {
+  line-height: 1.5;
+}

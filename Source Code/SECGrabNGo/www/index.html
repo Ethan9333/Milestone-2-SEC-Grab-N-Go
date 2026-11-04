@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SEC Grab-N-Go</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<main id="app">
+  <section id="welcomeScreen" class="screen active">
+    <div class="welcome-content"><h1>SEC GRAB-N-GO</h1><p>Smart Ordering for Xavier Ateneo SEC Mall</p></div>
+    <button id="getStartedBtn" class="primary-btn">GET STARTED</button>
+  </section>
+  <section id="loginScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Login</span></header>
+    <div class="page-content login-content"><h3>WELCOME BACK!</h3>
+      <form id="loginForm"><label for="loginEmail">University Email</label><input id="loginEmail" type="email" placeholder="student@my.xu.edu.ph" required><label for="loginPassword">Password</label><input id="loginPassword" type="password" placeholder="Enter password" required><button type="submit" class="primary-btn">SIGN IN</button></form>
+      <p class="register-text">Don't have an account? <a href="#" id="registerLink">Register</a></p>
+    </div>
+  </section>
+  <section id="registerScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Registration</span></header>
+    <div class="page-content"><h3>CREATE AN ACCOUNT</h3>
+      <form id="registerForm"><label for="registerName">Full Name</label><input id="registerName" required><label for="registerEmail">University Email</label><input id="registerEmail" type="email" required><label for="registerPassword">Password</label><input id="registerPassword" type="password" required><button class="primary-btn" type="submit">REGISTER</button></form>
+      <button id="backToLoginBtn" class="back-btn">← Back to Login</button><p id="registerMessage" class="message" role="status"></p>
+    </div>
+  </section>
+  <section id="customerHomeScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Stall directory</span></header>
+    <div class="page-content"><h3>FIND YOUR NEXT MEAL</h3><input type="search" id="stallSearch" placeholder="Search SEC Mall stalls" aria-label="Search SEC Mall stalls">
+      <div class="stall-list"><button class="stall-card" data-stall="Stall A"><strong>Stall A</strong><small>Rice meals and snacks</small></button><button class="stall-card" data-stall="Stall B"><strong>Stall B</strong><small>Drinks and desserts</small></button><button class="stall-card" data-stall="Stall C"><strong>Stall C</strong><small>Sandwiches</small></button></div>
+      <p id="stallMessage" class="message" role="status"></p>
+      <button id="openVendorDemoBtn" class="outline-btn demo-entry">Open Vendor Dashboard</button>
+    </div>
+    <nav class="bottom-nav"><button class="nav-item selected" data-go="customerHomeScreen">Home</button><button class="nav-item" data-go="ordersScreen">Orders</button><button class="nav-item" data-go="profileScreen">Profile</button></nav>
+  </section>
+  <section id="stallMenuScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span id="selectedStallName">Stall Menu</span></header>
+    <div class="page-content"><button class="back-btn" data-go="customerHomeScreen">← Back to Stalls</button><h3>STALL MENU</h3><div id="menuItems" class="stall-list"></div><p id="menuMessage" class="message" role="status"></p></div>
+    <nav class="bottom-nav"><button class="nav-item" data-go="customerHomeScreen">Home</button><button class="nav-item selected">Menu</button><button class="nav-item" id="menuCartBtn">Cart</button></nav>
+  </section>
+  <section id="cartScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Shopping Cart</span></header>
+    <div class="page-content"><button id="backToMenuBtn" class="back-btn">← Back to Menu</button><h3>YOUR CART</h3><div id="cartItems" class="stall-list"></div><p id="emptyCartMessage" class="message">Your cart is empty.</p><div class="cart-summary"><strong>Total:</strong><strong id="cartTotal">₱0.00</strong></div><button id="checkoutBtn" class="primary-btn">PROCEED TO CHECKOUT</button></div>
+    <nav class="bottom-nav"><button class="nav-item" data-go="customerHomeScreen">Home</button><button class="nav-item" id="cartMenuBtn">Menu</button><button class="nav-item selected">Cart</button></nav>
+  </section>
+  <section id="checkoutScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Checkout</span></header>
+    <div class="page-content"><button class="back-btn" id="backToCartBtn">← Back to Cart</button><h3>ORDER SUMMARY</h3><p id="checkoutStall" class="subheading"></p><div id="checkoutItems" class="stall-list"></div><div class="cart-summary"><strong>Total Amount:</strong><strong id="checkoutTotal">₱0.00</strong></div><h3>PICKUP DETAILS</h3>
+      <form id="checkoutForm"><label for="pickupName">Customer Name</label><input id="pickupName" placeholder="Enter your full name" required><label for="pickupTime">Preferred Pickup Time</label><input id="pickupTime" type="time" required><label for="paymentMethod">Payment Method</label><select id="paymentMethod" required><option value="qrph">QR Ph (only)</option></select><button class="primary-btn" type="submit">CONTINUE TO QR PH PAYMENT</button></form>
+    </div>
+  </section>
+  <section id="paymentScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>QR Ph Payment</span></header>
+    <div class="page-content"><button class="back-btn" data-go="checkoutScreen">← Back to Checkout</button><h3>PAY WITH QR PH</h3><p id="paymentStall" class="subheading"></p><div class="qr-placeholder"><span class="qr-icon">▦</span><strong>STALL QR PH CODE</strong><small>Actual vendor QR image will be added later.</small><small>Not a scannable payment code</small></div><div class="cart-summary"><strong>Amount to Pay:</strong><strong id="paymentTotal">₱0.00</strong></div><p class="note">Milestone 2 demonstration only. No actual QR Ph transaction or payment verification occurs here.</p><button id="demoPaidBtn" class="primary-btn">SIMULATE VERIFIED PAYMENT</button><button id="demoFailedBtn" class="outline-btn">SIMULATE FAILED PAYMENT</button><p id="paymentMessage" class="message" role="status"></p></div>
+  </section>
+  <section id="confirmationScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Order Confirmation</span></header>
+    <div class="page-content"><div class="confirmation-mark">✓</div><h3 class="center">ORDER CONFIRMED (DEMO)</h3><p class="note center">Payment success was simulated. This is not proof of an actual payment.</p><div id="confirmationDetails" class="detail-panel"></div><button class="primary-btn" data-go="ordersScreen">VIEW MY ORDERS</button><button class="outline-btn" data-go="customerHomeScreen">BACK TO STALL DIRECTORY</button></div>
+  </section>
+  <section id="ordersScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>My Orders</span></header>
+    <div class="page-content"><h3>MY ORDERS</h3><p class="note">Demo orders are stored only in this app session.</p><div id="ordersList" class="stall-list"></div></div>
+    <nav class="bottom-nav"><button class="nav-item" data-go="customerHomeScreen">Home</button><button class="nav-item selected">Orders</button><button class="nav-item" data-go="profileScreen">Profile</button></nav>
+  </section>
+  <section id="orderDetailScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Order Status</span></header>
+    <div class="page-content"><button class="back-btn" data-go="ordersScreen">← Back to My Orders</button><h3>ORDER DETAILS</h3><div id="orderDetailContent" class="detail-panel"></div></div>
+  </section>
+  <section id="profileScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Customer Profile</span></header>
+    <div class="page-content"><h3>MY PROFILE</h3><div class="detail-panel"><strong>Customer Account (Demo)</strong><p id="profileEmail"></p></div><button id="signOutBtn" class="outline-btn">SIGN OUT</button></div>
+    <nav class="bottom-nav"><button class="nav-item" data-go="customerHomeScreen">Home</button><button class="nav-item" data-go="ordersScreen">Orders</button><button class="nav-item selected">Profile</button></nav>
+  </section>
+  <section id="vendorScreen" class="screen">
+    <header class="app-header"><h2>SEC GRAB-N-GO</h2><span>Vendor Dashboard — Demo</span></header>
+    <div class="page-content"><button class="back-btn" data-go="customerHomeScreen">← Customer Home</button><h3>VENDOR ORDERS</h3><label for="vendorStall">View orders for stall</label><select id="vendorStall"><option>Stall A</option><option>Stall B</option><option>Stall C</option></select><p class="note">Demo vendor view only. Real vendor login and server delivery are not implemented.</p><div id="vendorOrders" class="stall-list"></div></div>
+  </section>
+</main>
+<script src="cordova.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
